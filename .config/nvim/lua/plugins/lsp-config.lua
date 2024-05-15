@@ -59,8 +59,8 @@ return {
       lspconfig.svelte.setup({})
       lspconfig.volar.setup({})
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-      vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
+      vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, {})
+      vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
     end
   }
 }
