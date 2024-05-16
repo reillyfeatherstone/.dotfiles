@@ -1,6 +1,8 @@
 return {
   {
     "nvim-telescope/telescope.nvim", tag = "0.1.6",
+    lazy = false,
+    event = "BufReadPre",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       local builtin = require('telescope.builtin')
@@ -12,6 +14,8 @@ return {
   },
   {
     "nvim-telescope/telescope-ui-select.nvim",
+    lazy = false,
+    event = "BufReadPre",
     config = function()
       require("telescope").setup({
         extentions = {

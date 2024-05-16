@@ -1,5 +1,7 @@
 return {
 	"nvimtools/none-ls.nvim",
+  lazy = false,
+  event = "BufReadPre",
 	dependencies = {
 		"nvimtools/none-ls-extras.nvim",
 	},
@@ -14,18 +16,19 @@ return {
 				formatting.prettier,
 				formatting.black,
 				formatting.isort,
-        formatting.goimports,
-        formatting.sql_formatter,
+				formatting.goimports,
+				formatting.sql_formatter,
 				diagnostics.revive,
 				diagnostics.sqlfluff.with({
 					extra_args = { "--dialect", "postgres" },
 				}),
-        diagnostics.stylelint,
+				diagnostics.stylelint,
 				require("none-ls.diagnostics.eslint_d"),
 				require("none-ls.diagnostics.flake8"),
 			},
 		})
 
-		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+		vim.keymap.set("n", "<leader>fj", vim.lsp.buf.format, {})
+		vim.keymap.set("n", "<leader>jf", vim.lsp.buf.format, {})
 	end,
 }
