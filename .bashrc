@@ -53,7 +53,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then 
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -133,9 +133,25 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME/'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME/'
+# Function to open files or URLs in Chrome
+chrome() {
+  if [ -e "$1" ]; then
+    local file_path
+    file_path=$(wslpath -w "$1")
+    "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" "$file_path"
+  else
+    "/mnt/c/Program Files/Google/Chrome/Application/chrome.exe" "$1"
+  fi
+}
 
-
-
-
-
+# Function to open files or URLs in Firefox
+firefox() {
+  if [ -e "$1" ]; then
+    local file_path
+    file_path=$(wslpath -w "$1")
+    "/mnt/c/Program Files/Mozilla Firefox/firefox.exe" "$file_path"
+  else
+    "/mnt/c/Program Files/Mozilla Firefox/firefox.exe" "$1"
+  fi
+}
